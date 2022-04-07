@@ -18,13 +18,6 @@ class User(db.Model):
     file = db.Column(db.String(120), unique=False, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-if not os.path.exists(os.path.join(app_dir, app.config['UPLOAD_FOLDER'])):
-    os.makedirs(os.path.join(app_dir, app.config['UPLOAD_FOLDER']))
-
-if not os.path.exists(os.path.join(app_dir, 'db.db')):
-    db.create_all()
-
-
 @app.route('/imgUpload', methods=['POST'])
 def upload():
 
